@@ -438,6 +438,13 @@ function GlassPanel({
               ))}
             </div>
           </div>
+          {toast && (
+            <div key={toast} className="mt-3 flex justify-center animate-toast">
+              <div className="rounded-full border border-border bg-card px-4 py-2 text-[13px] shadow-sm">
+                {toast}
+              </div>
+            </div>
+          )}
         </section>
       </div>
     </div>
