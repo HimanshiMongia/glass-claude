@@ -221,9 +221,9 @@ function ClaudeApp() {
                     expandedNode={expandedNode}
                     setExpandedNode={setExpandedNode}
                     onClose={() => setGlassOpen(false)}
+                    toast={toast}
                     onChoice={(label) => {
                       showToast(`Noted — Glass will remember this on your next high-stakes task.`);
-                      // suppress unused warning
                       void label;
                     }}
                     onFix={() => showToast("Flagged — Glass will treat this as a correction.")}
@@ -271,14 +271,6 @@ function ClaudeApp() {
           </div>
         </div>
 
-        {/* Toast */}
-        {toast && (
-          <div className="pointer-events-none fixed bottom-6 left-1/2 z-50 -translate-x-1/2 animate-toast">
-            <div className="rounded-full border border-border bg-card px-4 py-2 text-[13px] shadow-md">
-              {toast}
-            </div>
-          </div>
-        )}
       </main>
     </div>
   );
@@ -327,13 +319,14 @@ function TagPill({ tag }: { tag: NodeTag }) {
 }
 
 function GlassPanel({
-  expandedNode, setExpandedNode, onClose, onChoice, onFix,
+  expandedNode, setExpandedNode, onClose, onChoice, onFix, toast,
 }: {
   expandedNode: number | null;
   setExpandedNode: (n: number | null) => void;
   onClose: () => void;
   onChoice: (label: string) => void;
   onFix: () => void;
+  toast: string | null;
 }) {
   return (
     <div className="mt-5 overflow-hidden rounded-2xl border border-border bg-card/70 animate-glass-expand">
@@ -388,8 +381,9 @@ function GlassPanel({
                     )}
                   </button>
                   {i < NODES.length - 1 && (
-                    <div className="flex justify-center py-1">
-                      <div className="h-4 w-px bg-border" />
+                    <div className="flex flex-col items-center" aria-hidden>
+                      <div className="h-6 w-[2px] bg-muted-foreground/60" />
+                      <div className="-mt-[1px] h-0 w-0 border-l-[5px] border-r-[5px] border-t-[6px] border-l-transparent border-r-transparent border-t-muted-foreground/60" />
                     </div>
                   )}
                 </div>
@@ -444,6 +438,13 @@ function GlassPanel({
               ))}
             </div>
           </div>
+          {toast && (
+            <div key={toast} className="mt-3 flex justify-center animate-toast">
+              <div className="rounded-full border border-border bg-card px-4 py-2 text-[13px] shadow-sm">
+                {toast}
+              </div>
+            </div>
+          )}
         </section>
       </div>
     </div>
