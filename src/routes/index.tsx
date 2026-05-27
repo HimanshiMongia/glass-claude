@@ -319,13 +319,14 @@ function TagPill({ tag }: { tag: NodeTag }) {
 }
 
 function GlassPanel({
-  expandedNode, setExpandedNode, onClose, onChoice, onFix,
+  expandedNode, setExpandedNode, onClose, onChoice, onFix, toast,
 }: {
   expandedNode: number | null;
   setExpandedNode: (n: number | null) => void;
   onClose: () => void;
   onChoice: (label: string) => void;
   onFix: () => void;
+  toast: string | null;
 }) {
   return (
     <div className="mt-5 overflow-hidden rounded-2xl border border-border bg-card/70 animate-glass-expand">
