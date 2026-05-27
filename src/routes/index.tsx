@@ -388,8 +388,9 @@ function GlassPanel({
                     )}
                   </button>
                   {i < NODES.length - 1 && (
-                    <div className="flex justify-center py-1">
-                      <div className="h-4 w-px bg-border" />
+                    <div className="flex flex-col items-center" aria-hidden>
+                      <div className="h-6 w-[2px] bg-muted-foreground/60" />
+                      <div className="-mt-[1px] h-0 w-0 border-l-[5px] border-r-[5px] border-t-[6px] border-l-transparent border-r-transparent border-t-muted-foreground/60" />
                     </div>
                   )}
                 </div>
