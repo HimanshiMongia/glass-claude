@@ -221,9 +221,9 @@ function ClaudeApp() {
                     expandedNode={expandedNode}
                     setExpandedNode={setExpandedNode}
                     onClose={() => setGlassOpen(false)}
+                    toast={toast}
                     onChoice={(label) => {
                       showToast(`Noted — Glass will remember this on your next high-stakes task.`);
-                      // suppress unused warning
                       void label;
                     }}
                     onFix={() => showToast("Flagged — Glass will treat this as a correction.")}
