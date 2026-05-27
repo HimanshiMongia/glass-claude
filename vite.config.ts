@@ -4,5 +4,5 @@ export default defineConfig({
   tanstackStart: {
     server: { entry: "server" },
   },
-  nitro: true,  // ← ADD THIS LINE to force-enable Nitro
+  nitro: false,  // ← CHANGE to false to build as static SPA
 });
