@@ -1,15 +1,10 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist/client",
-  "functions": {
-    "dist/server/index.mjs": {
-      "runtime": "nodejs24.x"
-    }
-  },
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/dist/server/index.mjs"
+      "destination": "/index.html"
     }
   ]
 }
